@@ -129,8 +129,8 @@ RC Table::drop(const char *name)
   PersistHandler persistHandler;
 
   // 删除表的元数据
-  std::string data_file = base_dir_ + "/" + table_name + ".data";
-  std::string table_file = base_dir_ + "/" + table_name + ".table";
+  std::string data_file = base_dir_ + "/" + name + ".data";
+  std::string table_file = base_dir_ + "/" + name + ".table";
   rc = persistHandler.remove_file(data_file.c_str());
   if (rc != RC::SUCCESS) {
     return rc;
@@ -141,7 +141,7 @@ RC Table::drop(const char *name)
   }
   // 删除索引
   for (auto index : indexes_) {
-    std::string index_file = base_dir_ + "/" + table_name + "-" + index->index_meta().name() + ".index";
+    std::string index_file = base_dir_ + "/" + name + "-" + index->index_meta().name() + ".index";
     rc = persistHandler.remove_file(index_file.c_str());
     if (rc != RC::SUCCESS) {
       return rc;
