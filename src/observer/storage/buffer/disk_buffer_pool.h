@@ -195,7 +195,7 @@ public:
   /**
    * 关闭分页文件
    */
-  RC close_file();
+  RC close_file(const char *table_name);
 
 
   RC remove_file();
