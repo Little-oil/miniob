@@ -105,10 +105,12 @@ RC Db::drop_table(const char *table_name)
 {
   RC rc = RC::SUCCESS;
   // check table_name
-  if (table == nullptr) {
-    LOG_WARN("%s not exist", table_name);
+  if (!opened_tables_.count(table_name)) {
+    LOG_WARN("%s not exist.", table_name);
     return RC::SCHEMA_TABLE_NOT_EXIST;
   }
+  Table *table = find_table(table_name);
+  
 
   rc = table->drop(table_name);
   if (rc != RC::SUCCESS) {
