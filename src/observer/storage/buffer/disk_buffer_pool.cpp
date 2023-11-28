@@ -284,6 +284,15 @@ RC DiskBufferPool::close_file()
   return RC::SUCCESS;
 }
 
+RC DiskBufferPool::remove_file(const char *table_name)
+{
+  RC rc = RC::SUCCESS;
+
+  rc = close_file();
+ 
+  return rc;
+}
+
 RC DiskBufferPool::get_this_page(PageNum page_num, Frame **frame)
 {
   RC rc  = RC::SUCCESS;

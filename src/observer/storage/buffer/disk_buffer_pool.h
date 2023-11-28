@@ -197,6 +197,9 @@ public:
    */
   RC close_file();
 
+
+  RC remove_file();
+
   /**
    * 根据文件ID和页号获取指定页面到缓冲区，返回页面句柄指针。
    */
